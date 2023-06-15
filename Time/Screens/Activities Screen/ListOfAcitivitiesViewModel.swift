@@ -58,6 +58,18 @@ class Activity: Object, Identifiable {
         end != 0
     }
     
+    var type: ActivityType {
+        if name.starts(with: ActivityType.fun.rawValue) {
+            return .fun
+        } else if name.starts(with: ActivityType.work.rawValue) {
+            return .work
+        } else if name.starts(with: ActivityType.chore.rawValue) {
+            return .chore
+        } else {
+            return .other
+        }
+    }
+    
     func write(_ callback: (Activity, Realm) -> Void) {
         guard let thawedObj = self.thaw() else { return }
         assert(thawedObj.isFrozen == false)
@@ -70,4 +82,11 @@ class Activity: Object, Identifiable {
             print(error)
         }
     }
+}
+
+enum ActivityType: String, CaseIterable {
+    case fun = "fun"
+    case work = "work"
+    case chore = "chore"
+    case other = "other"
 }

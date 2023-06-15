@@ -13,6 +13,7 @@ struct TimeApp: App {
         WindowGroup {
             ListOfAcitivitiesView()
                 .environmentObject(ListOfAcitivitiesViewModel())
+                .environmentObject(ListOfWeeklyActivitiesViewModel())
                 .preferredColorScheme(.dark)
         }
     }

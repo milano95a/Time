@@ -12,17 +12,22 @@ struct ListOfAcitivitiesView: View {
     @EnvironmentObject var vm: ListOfAcitivitiesViewModel
     
     var body: some View {
-        ZStack {
+        NavigationStack {
             ZStack {
-                list
-                Color.clear
+                ZStack {
+                    list
+                    Color.clear
+                }
+                ZStack(alignment: .bottom) {
+                    HStack {
+                        createActivity
+                        moreButton
+                    }
+                    Color.clear
+                }
             }
-            ZStack(alignment: .bottom) {
-                createActivity
-                Color.clear
-            }
+            .background(.black)
         }
-        .background(.black)
     }
     
     @ViewBuilder
@@ -78,11 +83,13 @@ struct ListOfAcitivitiesView: View {
                     vm.startActivity()
                 })
                 .padding()
-                .background(Color.blue1)
+                .background(vm.newActivityName.isEmpty ? Color.red1 : Color.blue1)
                 .cornerRadius(16)
                 .foregroundColor(.white)
                 .fontWeight(.bold)
+                .disabled(vm.newActivityName.isEmpty)
             }
+            
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         } else {
             Button(action: {
@@ -101,6 +108,15 @@ struct ListOfAcitivitiesView: View {
             })
             .padding()
         }
+    }
+    
+    var moreButton: some View {
+        NavigationLink("more", destination: MoreView())
+            .padding()
+            .background(Color.blue1)
+            .cornerRadius(16)
+            .foregroundColor(.white)
+            .fontWeight(.bold)
     }
     
     private func animatePlaceholder() {

@@ -11,7 +11,9 @@ import SwiftUI
 struct TimeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListOfAcitivitiesView()
+                .environmentObject(ListOfAcitivitiesViewModel())
+                .preferredColorScheme(.dark)
         }
     }
 }

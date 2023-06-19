@@ -19,9 +19,9 @@ struct ListOfAcitivitiesView: View {
                     Color.clear
                 }
                 ZStack(alignment: .bottom) {
-                    HStack {
-                        createActivity
+                    HStack(spacing: 0) {
                         moreButton
+                        createActivity
                     }
                     Color.clear
                 }
@@ -83,14 +83,14 @@ struct ListOfAcitivitiesView: View {
                     vm.startActivity()
                 })
                 .padding()
-                .background(vm.newActivityName.isEmpty ? Color.red1 : Color.blue1)
+                .background(vm.newActivityName.isEmpty ? Color.gray : Color.green2)
                 .cornerRadius(16)
                 .foregroundColor(.white)
                 .fontWeight(.bold)
                 .disabled(vm.newActivityName.isEmpty)
             }
-            
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+            .padding(EdgeInsets(top: .zero, leading: 8, bottom: 12, trailing: 12))
+//            .background(.yellow)
         } else {
             Button(action: {
                 vm.stopActivity()
@@ -103,20 +103,24 @@ struct ListOfAcitivitiesView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .padding()
-                .background(Color.blue1)
+                .background(Color.red2)
                 .cornerRadius(16)
             })
-            .padding()
+            .padding(EdgeInsets(top: .zero, leading: 8, bottom: 12, trailing: 12))
         }
     }
     
     var moreButton: some View {
-        NavigationLink("more", destination: MoreView())
-            .padding()
-            .background(Color.blue1)
-            .cornerRadius(16)
-            .foregroundColor(.white)
-            .fontWeight(.bold)
+        ZStack {
+            NavigationLink("more", destination: MoreView())
+                .padding()
+                .background(Color.blue1)
+                .cornerRadius(16)
+                .foregroundColor(.white)
+                .fontWeight(.bold)
+        }
+        .padding(EdgeInsets(top: .zero, leading: 12, bottom: 12, trailing: .zero))
+//        .background(.green)
     }
     
     private func animatePlaceholder() {

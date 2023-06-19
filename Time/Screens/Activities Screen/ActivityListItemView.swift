@@ -37,7 +37,8 @@ struct ActivityListItemView: View {
     private func fontSize(_ duration: Int64) -> CGFloat {
         let numberOfHours = CGFloat(duration) / 60
         let scale: CGFloat = 0.5
-        return 20 * (1 + numberOfHours * scale)
+        let fontSizeMultiplier = min(numberOfHours, 4)
+        return 20 * (1 + fontSizeMultiplier * scale)
     }
     
     private func backgroundColor(_ text: String) -> Color {

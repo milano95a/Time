@@ -68,6 +68,9 @@ extension Color {
     static var red1: Color {
         Color(red: 204/255, green: 91/255, blue: 91/255)
     }
+    static var red2: Color {
+        Color(red: 195/255, green: 60/255, blue: 60/255)
+    }
     static var black1: Color {
         Color(red: 55/255, green: 55/255, blue: 55/255)
     }
@@ -77,6 +80,10 @@ extension Color {
     static var green1: Color {
         Color(red: 118/255, green: 175/255, blue: 71/255)
     }
+    static var green2: Color {
+        Color(red: 98/255, green: 145/255, blue: 59/255)
+    }
+
     static var purple1: Color {
         Color(red: 115/255, green: 66/255, blue: 164/255)
     }
